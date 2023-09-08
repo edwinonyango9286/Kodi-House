@@ -1,0 +1,1 @@
+export const base_url = "https://api.kodihouse.com/v2/api-docs";
