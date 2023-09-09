@@ -73,7 +73,9 @@ const SignIn =()=>{
             </div>
             <button className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white'>Sign In</button>
             <p className='flex items-center mt-2'><input className='mr-2' type="checkbox"  />Remember Me</p>
-            <p className='text-center mt-8'>Not a member? Sign up now</p>
+            <p className='text-center mt-8'>
+                        Not a member? Sign up now
+                    </p>
         </form>
     </div>
                     
