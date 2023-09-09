@@ -1,0 +1,21 @@
+.p-terms{
+    margin-left: 5px;
+}
+.btn-create-account{
+    border-radius: 10px;
+}
+.house-name{
+    color: var(--default-white, #FFF);
+text-align: center;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.house-icon{
+    padding: 4px , 0px;
+}
+svg{
+    font-size: 20px;
+}
