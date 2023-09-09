@@ -10,11 +10,7 @@ function App() {
    <Router>
     <Routes>
       <Route path='/' element={<SignIn/>}/>
-<<<<<<< HEAD
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
-=======
-      <Route path='/SignUp' element={<SignUp/>}/>
->>>>>>> b0eff4f0889bae9eab5056001d200f7f4b754f55
     </Routes>
    </Router>
    </>
