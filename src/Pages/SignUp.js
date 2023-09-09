@@ -59,6 +59,12 @@ const SignUp =()=>{
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+
+    // form alidate
+    const isNameValid = /^[A-Za-z\s]+$/.test(name);
+    const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password);
+  
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -68,6 +74,21 @@ const SignUp =()=>{
           email,
           password,
         };
+        if (!isNameValid) {
+            alert('Please enter a valid name (only letters and spaces allowed).');
+            return;
+          }
+      
+          if (!isPasswordValid) {
+            alert('Please enter a valid password (at least 8 characters with letters and numbers).');
+            return;
+          }
+      
+          if (!email || !password) {
+            alert('Please fill in all required fields.');
+            return;
+          }
+      
     
         // You can now send formData to your backend API
         // Example: axios.post('/api/signup', formData)
@@ -83,7 +104,7 @@ const SignUp =()=>{
   
         <div className="flex justify-center items-center h-full w-full md:w-1/2 opacity-80">
 
-          <form className="max-w-[400px] w-full bg-white p-8 rounded-md">
+        <form className="max-w-[400px] w-full bg-white p-8 rounded-md" onSubmit={handleSubmit}>
             <div className="flex items-center justify-center">
               <img src={IconBlue} alt="Logo" className="" />
             </div>
@@ -146,6 +167,7 @@ const SignUp =()=>{
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  error={!isNameValid}
                 />
               </FormControl>
               <FormControl fullWidth sx={{ m: 1 }}>
@@ -187,9 +209,10 @@ const SignUp =()=>{
                     </InputAdornment>
                   }
                   label="Password"
-                  helperText="Please enter your password"
+                  helperText={!isPasswordValid}
                   value={password}
                   required
+                  error={!isPasswordValid}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
@@ -200,7 +223,7 @@ const SignUp =()=>{
                 <p className="p-terms"> terms and conditions</p>{' '}
               </Link>{' '}
             </h6>
-            <button className="w-full py-3 mt-8 bg-indigo-600 hover:bg-blue-500 relative text-white btn-create-account">
+            <button className="w-full py-3 mt-8 bg-indigo-600 hover:bg-blue-500 relative text-white btn-create-account" type="submit">
               Create Account
             </button>
   
