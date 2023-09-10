@@ -151,7 +151,7 @@ const SignIn = () => {
                   Doesn't have account?
                 </h5>
                 <Link
-                  to=""
+                  to="/signup"
                   className="text-blue-600 text-sm leading-5 font-medium "
                 >
                   Create an account
