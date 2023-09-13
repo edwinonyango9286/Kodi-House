@@ -19,3 +19,7 @@ line-height: normal;
 svg{
     font-size: 20px;
 }
+.wider-div{
+    width: 66.666%; /* Adjust this value as needed */
+
+}
