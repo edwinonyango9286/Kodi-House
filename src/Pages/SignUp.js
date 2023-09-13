@@ -102,9 +102,9 @@ const SignUp =()=>{
           className="absolute object-cover w-full h-full  mix-blend-overlay"
         />
   
-        <div className="flex justify-center items-center h-full w-full md:w-1/2 opacity-80">
+  <div className="flex justify-center items-center h-full w-full md:w-1/3 wider-div opacity-80">
 
-        <form className="max-w-[400px] w-full bg-white p-8 rounded-md" onSubmit={handleSubmit}>
+        <form className="max-w-[500px]  w-full bg-white p-8 rounded-md" onSubmit={handleSubmit}>
             <div className="flex items-center justify-center">
               <img src={IconBlue} alt="Logo" className="" />
             </div>
