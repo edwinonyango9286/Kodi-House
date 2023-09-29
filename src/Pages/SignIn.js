@@ -12,7 +12,6 @@ import { BsTwitter } from "react-icons/bs";
 import { BsApple } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
-import "../custom-css/layout.css";
 
 let schema = Yup.object().shape({
   email: Yup.string().email("Invalid Email").required("Email required"),
@@ -73,7 +72,7 @@ const SignIn = () => {
                 val={formik.values.email}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col mb-2">
               <CustomInput
                 type="password"
                 name="password"
@@ -101,10 +100,9 @@ const SignIn = () => {
               </div>
             </div>
     
-            <button className="border rounded-md w-full py-3 mt-4 bg-blue-700 relative text-white">
+            <button className="border rounded-lg w-full py-3 mt-4 bg-blue-700 relative text-white">
               Sign in
             </button>
-    
             <div className="mt-4 flex items-center">
               <div className="border-b-2 mr-4 border-gray-400 flex-grow"></div>
               <p className="text-gray-500">OR</p>
@@ -128,7 +126,9 @@ const SignIn = () => {
                   </p>
                 </div>
               </button>
-              <button className="border rounded-md w-full py-3 bg-black relative text-white">
+              <button style={{
+
+              }} className="border rounded-md w-full py-3 bg-black relative text-white">
                 <div className="flex items-center justify-center gap-2">
                   <BsApple className="text-white" />
                   <p className="text-sm font-bold leading-5 tracking-wide">
