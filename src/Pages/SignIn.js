@@ -43,19 +43,18 @@ const SignIn = () => {
     }
   }, [user, isError, isSuccess, isLoading]);
   return (
-    
-    <>
-      <div className="relative w-half min-h-screen bg-cover bg-gray-800 flex items-center justify-between">
 
+    <>
+      <div className="relative w-full h-screen bg-cover bg-gray-800 flex justify-center items-center">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
-          alt="Background"
+          alt="BackgroundImage"
         />
     
 
-    <div className="flex justify-center items-center h-full w-full md:w-1/3 wider-div opacity-80">
-          <form className="bg-white p-8 rounded-md md:w-2/3">
+    <div className="flex justify-center items-center h-full w-1/2 opacity-95">
+          <form className="bg-white p-8 rounded-md w-2/3"> 
             <div className="flex items-center justify-center ">
               <img src={IconBlue} className="flex-shrink-0" alt="Icon" />
             </div>
@@ -113,7 +112,6 @@ const SignIn = () => {
             </div>
     
             <div className="flex flex-col mt-4 space-y-4">
-              {/* Social media sign-in buttons */}
               <button className="border rounded-md w-full py-3 bg-white relative text-gray-800">
                 <div className="flex items-center justify-center gap-2">
                   <FcGoogle />
@@ -161,25 +159,22 @@ const SignIn = () => {
             </div>
           </form>
     </div>
-                {/* Hide this div on smaller devices */}
-    <div className="hidden md:flex justify-center items-center w-1/2">
-        <div className="Col">
-                {/* First row */}
-            <div className="flex items-center text-white house-icon" >
+
+    <div className=" hidden sm:block w-1/2">
+        <div className="flex flex-col  justify-items-center items-center">
+            <div className="text-white" >
             <img src={LogoWhite} alt="Logo" className="mr-2" />
-            <h4 className="text-white">Kodi House</h4>
             </div>
 
-               {/* Second row */}
-            <div className="mt-4">
-                <h6 className="text-white house-name">Sign up or create account</h6>
+            <div className="mt-5">
+                <h6 className="text-white">Sign up or create account</h6>
             </div>
         </div>
 
     </div>
     
   </div>
-</>
+  </>
     
  );
 };
