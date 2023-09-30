@@ -199,7 +199,7 @@ const SignUp = () => {
                 Already have an accout ?
               </h5>
               <Link
-                to="/signup"
+                to="/"
                 className="text-blue-600 text-sm leading-5 font-medium ml-2"
               >
                 Login here

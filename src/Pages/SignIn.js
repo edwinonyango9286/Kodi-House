@@ -92,7 +92,7 @@ const SignIn = () => {
               </div>
               <div>
                 <Link
-                  to="forgotpassword"
+                  to="/forgot-password"
                   className="text-blue-600 text-xs font-medium leading-6 "
                 >
                   Forgot your password?
@@ -100,7 +100,7 @@ const SignIn = () => {
               </div>
             </div>
     
-            <button className="border rounded-lg w-full py-3 mt-4 bg-blue-700 relative text-white">
+            <button type="submit" className="border rounded-lg w-full py-3 mt-4 bg-blue-700 relative text-white">
               Sign in
             </button>
             <div className="mt-4 flex items-center">
