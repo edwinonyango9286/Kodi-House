@@ -8,6 +8,7 @@ import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import ResetPassword from './Pages/ResetPassword';
 import EmailVerification from './Pages/EmailVerification';
 import MainLayout from './Components/MainLayout';
+import Dashboard from './Pages/Dashboard';
 
 function App() {
   return (
@@ -19,7 +20,12 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/email-verification" element={<EmailVerification />} />
-          <Route path="admin/" element={<MainLayout/>} />
+          <Route path="/admin" element={<MainLayout/>}> 
+          <Route index element={<Dashboard/>}/>
+
+          
+
+          </Route>
         </Routes>
       </Router>
     </>

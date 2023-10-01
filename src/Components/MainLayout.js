@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import {AiOutlineDashboard,AiOutlineShoppingCart,AiOutlineUser} from "react-icons/ai";
-import { RiCouponLine } from "react-icons/ri";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { ImBlog } from "react-icons/im";
-import { MdNotificationsNone } from "react-icons/md";
 import { Layout, Menu,Button, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 import IconWhite from '../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon white.png'
@@ -49,7 +44,6 @@ const MainLayout = () => {
           <h2 className="text-white text-base font-bold">KODI HOUSE</h2>
         </div>
         <Menu
-          theme="dark"
           mode="inline"
           //defaultSelectedKeys={[""]}
           onClick={({ key }) => {
@@ -60,7 +54,7 @@ const MainLayout = () => {
           }}
           items={[
             {
-              key: "james",
+              key: "USER",
               icon: <PiLightningBold className="fs-4" />,
               label: "Welcome James",
               //icon: <IoLogOutOutline className="fs-4" />,
@@ -205,7 +199,7 @@ const MainLayout = () => {
               id="dropdownMenuLink"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              className="flex flex-col justify-between "
+              className="flex flex-col justify-between"
             >
               <h5 className="mb-0">Omollo</h5>
               <p className="mb-0">omollo@dev.com</p>
@@ -216,7 +210,7 @@ const MainLayout = () => {
               style={{ height: "auto", lineHeight: "20px" }}
             >
               <li>
-                <Link to="/" className="dropdown-item py-1 mb-1">
+                <Link to="" className="dropdown-item py-1 mb-1">
                   View Profile
                 </Link>
               </li>
