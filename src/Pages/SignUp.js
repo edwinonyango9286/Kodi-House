@@ -187,7 +187,7 @@ const SignUp = () => {
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">
                 <input className="mr-1" type="checkbox" />
-                I accept the <Link to="/" className="text-blue-600" >terms and conditions</Link>
+                I accept the <Link to="" className="text-blue-600" >terms and conditions</Link>
               </div>
             </div>
               <button className="border rounded-lg w-full py-3 mt-4 bg-blue-700 relative text-white">
