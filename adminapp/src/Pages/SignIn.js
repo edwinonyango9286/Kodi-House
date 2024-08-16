@@ -41,26 +41,30 @@ const SignIn = () => {
       navigate("");
     }
   }, [user, isError, isSuccess, isLoading]);
-  return (
 
+  return (
     <>
-      <div className="relative w-full h-screen bg-cover bg-gray-800 flex justify-center items-center">
+      <div className="relative w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden lg:overflow-visible">
         <img
           src={signupBgImage}
-          className="absolute w-full h-full object-cover mix-blend-overlay"
+          className="absolute w-full h-full  object-cover mix-blend-overlay"
           alt="BackgroundImage"
+          loading="lazy"
         />
-    
-
-    <div className="flex justify-center items-center h-full w-1/2 opacity-95">
-          <form className="bg-white p-8 rounded-md w-2/3"> 
-            <div className="flex items-center justify-center ">
-              <img src={IconBlue} className="flex-shrink-0" alt="Icon" />
+        <div className="flex justify-center items-center h-full w-full opacity-95 lg:w-1/2 lg:my-4">
+          <form className="bg-white px-6 m-4 p-4 md:p-10 md:py-8 w-full  h-full md:w-3/4 md:h-auto rounded-md ">
+            <div className="flex items-center justify-center mb-2 ">
+              <img
+                src={IconBlue}
+                className="flex-shrink-0"
+                alt="Icon"
+                loading="lazy"
+              />
             </div>
-            <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center ">
+            <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center md:mb-4 ">
               Sign in
             </h2>
-            <div className="flex flex-col mb-2">
+            <div className="flex flex-col mb-2 md:mb-4">
               <CustomInput
                 type="email"
                 label="Email"
@@ -72,7 +76,7 @@ const SignIn = () => {
                 val={formik.values.email}
               />
             </div>
-            <div className="flex flex-col mb-2">
+            <div className="flex flex-col mb-2 md:mb-4">
               <CustomInput
                 type="password"
                 name="password"
@@ -84,7 +88,7 @@ const SignIn = () => {
                 val={formik.values.password}
               />
             </div>
-    
+
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">
                 <input className="mr-1" type="checkbox" />
@@ -99,8 +103,11 @@ const SignIn = () => {
                 </Link>
               </div>
             </div>
-    
-            <button type="submit" className="border rounded-lg w-full py-3 mt-4 bg-blue-700 relative text-white">
+
+            <button
+              type="submit"
+              className="border rounded-lg w-full py-2 mt-4 bg-blue-700 relative text-white"
+            >
               Sign in
             </button>
             <div className="mt-4 flex items-center">
@@ -108,7 +115,7 @@ const SignIn = () => {
               <p className="text-gray-500">OR</p>
               <div className="border-b-2 ml-4 border-gray-400 flex-grow"></div>
             </div>
-    
+
             <div className="flex flex-col mt-4 space-y-4">
               <button className="border rounded-md w-full py-3 bg-white relative text-gray-800">
                 <div className="flex items-center justify-center gap-2">
@@ -126,9 +133,10 @@ const SignIn = () => {
                   </p>
                 </div>
               </button>
-              <button style={{
-
-              }} className="border rounded-md w-full py-3 bg-black relative text-white">
+              <button
+                style={{}}
+                className="border rounded-md w-full py-3 bg-black relative text-white"
+              >
                 <div className="flex items-center justify-center gap-2">
                   <BsApple className="text-white" />
                   <p className="text-sm font-bold leading-5 tracking-wide">
@@ -145,8 +153,8 @@ const SignIn = () => {
                 </div>
               </button>
             </div>
-    
-            <div className="flex items-center flex-row mt-3 mb-4">
+
+            <div className="flex items-center flex-row mt-6 mb-2 ">
               <h5 className="text-grya-800 text-sm leading-5 font-medium">
                 Doesn't have an account?
               </h5>
@@ -158,24 +166,21 @@ const SignIn = () => {
               </Link>
             </div>
           </form>
-    </div>
-
-    <div className=" hidden sm:block w-1/2">
-        <div className="flex flex-col  justify-items-center items-center">
-            <div className="text-white" >
-            <img src={LogoWhite} alt="Logo" className="mr-2" />
-            </div>
-
-            <div className="mt-5">
-                <h6 className="text-white">Sign up or create account</h6>
-            </div>
         </div>
 
-    </div>
-    
-  </div>
-  </>
-    
- );
+        <div className=" hidden lg:block  lg:w-1/2">
+          <div className="flex flex-col  justify-items-center items-center">
+            <div className="text-white">
+              <img src={LogoWhite} alt="Logo" className="mr-2" loading="lazy" />
+            </div>
+
+            <div className="mt-6">
+              <h6 className="text-white">Sign up or create account</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 export default SignIn;
