@@ -16,8 +16,8 @@ const EmailVerification = () => {
           loading="lazy"
         />
         <div className="flex justify-center items-center h-full w-full m-4 lg:w-1/2 opacity-95">
-          <form className=" w-full md:w-3/4 h-auto flex-shrink-0 bg-white p-4 rounded-md md:p-10">
-            <div className="flex items-center justify-center mb-4 flex-col ">
+          <form className=" flex justify-center items-center flex-col w-full md:w-3/4 h-auto flex-shrink-0 bg-white p-4 rounded-md md:p-10 gap-4">
+            <div className="flex items-center justify-center flex-col ">
               <img
                 src={IconBlue}
                 className="flex-shrink-0"
@@ -28,28 +28,40 @@ const EmailVerification = () => {
                   height: 34,
                 }}
               />
-              <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center mt-4">
+              <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center">
                 Email Verification
               </h2>
             </div>
 
-            <div className="mt-4 mb-6 md:mb-8">
-              <p className="text-default-gray-500 text-sm md:text-base font-medium leading-5 text-center">
+            <div>
+              <p className="text-default-gray-500 text-xs md:text-base font-medium leading-5 text-center">
                 We have sent you verification email example@abc.com, Please
                 check it.
               </p>
             </div>
 
-            <div className="flex justify-center items-center border border-gray-500 rounded-full p-4">
-              <HiOutlineMail />
+            <div className="flex justify-center items-center rounded-full p-4 w-16 h-16 bg-gray-200 flex-shrink">
+              <HiOutlineMail
+                style={{
+                  width: 53,
+                  height: 53,
+                }}
+                className="text-gray-500"
+              />
             </div>
 
             <button
-              to=""
-              className="border rounded-lg w-full py-3 mt-6 md:mt-8 bg-blue-700 relative text-white"
+              type="submit"
+              className="border rounded-xl w-full py-2  bg-blue-700 relative text-white"
             >
               verify Email
             </button>
+
+            <div>
+              <p className="text-xs text-default-gray-500 md:text-base font-medium mb-4 ">
+                Didn't recieve an email? <span className="text-blue-600">Resend</span>
+              </p>
+            </div>
           </form>
         </div>
 

@@ -10,6 +10,8 @@ import { FcGoogle } from "react-icons/fc";
 import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
 import { BsApple } from "react-icons/bs";
 import { GrTwitter } from "react-icons/gr";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
 
 const signUpSchema = Yup.object().shape({
@@ -21,6 +23,11 @@ const signUpSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -33,7 +40,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="relative w-full h-full lg:h-auto md:w-screen  md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden">
+      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen  md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay "
@@ -126,17 +133,29 @@ const SignUp = () => {
                 id="pass"
               />
             </div>
-            <div className="flex flex-col mb-2 md:mb-4 gap-2">
+            <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
                 Password
               </label>
 
               <CustomInput
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="**********************"
-                id="pass"
+                id="password"
               />
+              <div>
+                <button
+                  type="button"
+                  onClick={handleToggle}
+                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="text-gray-500"
+                  />
+                </button>
+              </div>
             </div>
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">

@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import { Link } from "react-router-dom";
 import CustomInput from "../Components/CustomInput";
 import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const ResetPassword = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+  const handleToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
+   const handleToggle2 = () => {
+     setShowPassword2(!showPassword2);
+   };
+
   return (
     <>
-      <div className="relative w-full h-screen bg-cover bg-gray-800 flex justify-center items-center">
+      <div className="relative z-10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
@@ -32,27 +44,53 @@ const ResetPassword = () => {
             <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center mb-6 md:mt-2">
               Reset password
             </h2>
-            <div className="flex flex-col mb-2  md:mb-4 gap-2">
-              <label className="font-medium text-sm text-gray-800">Email</label>
+            <div className=" relative z-10 flex flex-col mb-2  md:mb-4 gap-2">
+              <label className="font-medium text-sm text-gray-800">
+                Enter new password
+              </label>
               <CustomInput
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 label="Enter new password"
                 placeholder="**********************"
-                id="pass"
+                id="password"
               />
+              <div>
+                <button
+                  type="button"
+                  onClick={handleToggle}
+                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="text-gray-500"
+                  />
+                </button>
+              </div>
             </div>
-            <div className="flex flex-col mb-2 md:mb-4 gap-2">
+            <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
-                Password
+                Re-enter password
               </label>
               <CustomInput
-                type="password"
+                type={showPassword2 ? "text" : "password"}
                 name="password"
                 label="Re-enter password"
                 placeholder="**********************"
                 id="pass"
               />
+              <div>
+                <button
+                  type="button"
+                  onClick={handleToggle2}
+                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword2 ? faEyeSlash : faEye}
+                    className="text-gray-500"
+                  />
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center justify-between mt-4 md:mt-6">
