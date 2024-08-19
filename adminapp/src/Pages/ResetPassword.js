@@ -19,12 +19,21 @@ const ResetPassword = () => {
         <div className="flex justify-center  items-center h-full w-full lg:w-1/2 opacity-95 mx-4 md:my-2">
           <form className="w-full flex-shrink-0 bg-white p-8 rounded-md md:w-3/4">
             <div className="flex items-center justify-center ">
-              <img src={IconBlue} className="flex-shrink-0" loading="lazy" />
+              <img
+                src={IconBlue}
+                className="flex-shrink-0"
+                loading="lazy"
+                style={{
+                  width: 34,
+                  height: 34,
+                }}
+              />
             </div>
             <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center mb-6 md:mt-2">
               Reset password
             </h2>
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-2  md:mb-4 gap-2">
+              <label className="font-medium text-sm text-gray-800">Email</label>
               <CustomInput
                 type="password"
                 name="password"
@@ -33,7 +42,10 @@ const ResetPassword = () => {
                 id="pass"
               />
             </div>
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-2 md:mb-4 gap-2">
+              <label className="font-medium text-sm text-gray-800">
+                Password
+              </label>
               <CustomInput
                 type="password"
                 name="password"
@@ -52,19 +64,24 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            <button className="border rounded-lg w-full py-3 mt-4 md:mt-6 bg-blue-700 relative text-white">
+            <button className="border rounded-xl w-full py-2 mt-8  bg-blue-700 relative text-white">
               Reset Password
             </button>
           </form>
         </div>
 
         <div className=" hidden lg:block lg:w-1/2">
-          <div className="flex flex-col  justify-items-center items-center">
+          <div className="flex flex-col  justify-items-center items-center gap-2">
             <div className="text-white">
-              <img src={LogoWhite} alt="Logo" className="mr-2" loading="lazy" />
+              <img
+                src={LogoWhite}
+                alt="Logo"
+                className="mr-2"
+                loading="lazy"
+                style={{ width: 191, height: 53 }}
+              />
             </div>
-
-            <div className="mt-4">
+            <div>
               <h6 className="text-white">Sign up or create account</h6>
             </div>
           </div>

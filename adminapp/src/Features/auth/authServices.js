@@ -1,16 +1,15 @@
 import axios from "axios";
-import {base_url} from "../../Utils/BaseUrl";
+import { base_url } from "../../Utils/BaseUrl";
 
-const signup = async(userData)=>{
-    const response = await axios.post(`${base_url}/v1/kodi/auth/login`,userData)
-    if(response.data){
-        localStorage.setItem("user",JSON.stringify(response.data));
-    }
-    return response.data
-}
+const createAccount = async (userData) => {
+  const response = await axios.post(`${base_url}/auth/createaccount`, userData);
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  return response.data;
+};
 
 const authService = {
-    signup
-}
-
+  createAccount,
+};
 export default authService;

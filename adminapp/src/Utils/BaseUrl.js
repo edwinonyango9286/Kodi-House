@@ -1,1 +1,1 @@
-export const base_url = "https://api.kodihouse.com/v2/api-docs";
+export const base_url = "http://localhost:4000/api/";
