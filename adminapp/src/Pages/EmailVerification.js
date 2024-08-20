@@ -1,14 +1,14 @@
 import React from "react";
 import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import { Link } from "react-router-dom";
-import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
-import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
+import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
+import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 import { HiOutlineMail } from "react-icons/hi";
 
 const EmailVerification = () => {
   return (
     <>
-      <div className="relative w-full h-screen bg-cover  bg-gray-800 flex justify-center items-center">
+      <div className="relative w-full h-screen bg-cover  bg-gray-800 flex justify-center items-center bg-opacity-70">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
@@ -52,14 +52,15 @@ const EmailVerification = () => {
 
             <button
               type="submit"
-              className="border rounded-xl w-full py-2  bg-blue-700 relative text-white"
+              className="border rounded-xl w-full py-2  bg-blue-700 hover:bg-blue-600 relative text-white"
             >
               verify Email
             </button>
 
             <div>
               <p className="text-xs text-default-gray-500 md:text-base font-medium mb-4 ">
-                Didn't recieve an email? <span className="text-blue-600">Resend</span>
+                Didn't recieve an email?{" "}
+                <span className="text-blue-600">Resend</span>
               </p>
             </div>
           </form>

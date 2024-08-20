@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import { Link } from "react-router-dom";
 import CustomInput from "../Components/CustomInput";
-import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
-import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
+import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
+import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +20,7 @@ const ResetPassword = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center">
+      <div className="relative z-10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
@@ -102,7 +102,7 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            <button className="border rounded-xl w-full py-2 mt-8  bg-blue-700 relative text-white">
+            <button className="border rounded-xl w-full py-2 mt-8  bg-blue-700 hover:bg-blue-600 relative text-white">
               Reset Password
             </button>
           </form>

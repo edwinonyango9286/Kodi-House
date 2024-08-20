@@ -5,15 +5,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUser } from "../Features/auth/authSlice";
-import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
-import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
+import backgroundImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
+import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitter } from "react-icons/bs";
 import { BsApple } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
+import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
 let schema = Yup.object().shape({
   email: Yup.string().email("Invalid Email").required("Email required"),
@@ -22,7 +22,6 @@ let schema = Yup.object().shape({
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-
   const handleToggle = () => {
     setShowPassword(!showPassword);
   };
@@ -52,9 +51,9 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden lg:overflow-visible">
+      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden lg:overflow-visible bg-opacity-70">
         <img
-          src={signupBgImage}
+          src={backgroundImage}
           className="absolute w-full h-full  object-cover mix-blend-overlay"
           alt="BackgroundImage"
           loading="lazy"
@@ -132,7 +131,7 @@ const SignIn = () => {
 
             <button
               type="submit"
-              className="border rounded-xl w-full py-2 mt-8 bg-blue-700 relative text-white"
+              className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white"
             >
               Sign in
             </button>
@@ -174,7 +173,7 @@ const SignIn = () => {
                 </div>
               </button>
 
-              <button className="border rounded-lg w-full bg-blue-600 relative text-white">
+              <button className="border rounded-lg w-full bg-blue-600  relative text-white">
                 <div className="flex items-center justify-center gap-2 py-3">
                   <FaFacebookF className="text-white" />
                   <p className="text-sm font-bold leading-5 tracking-wide">

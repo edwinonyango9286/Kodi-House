@@ -1,18 +1,19 @@
+
 import React, { useEffect, useState } from "react";
 import CustomInput from "../Components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
+import backgroundImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.png";
+import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
 import { BsApple } from "react-icons/bs";
 import { GrTwitter } from "react-icons/gr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.png";
+import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
 const signUpSchema = Yup.object().shape({
   name: Yup.string().required("Please enter your name."),
@@ -40,10 +41,10 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen  md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden">
+      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen  md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden bg-opacity-70">
         <img
-          src={signupBgImage}
-          className="absolute w-full h-full object-cover mix-blend-overlay "
+          src={backgroundImage}
+          className="absolute w-full h-full object-cover mix-blend-overlay"
           alt="BackgroundImage"
           loading="lazy"
         />
@@ -165,7 +166,7 @@ const SignUp = () => {
                 </Link>
               </div>
             </div>
-            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 relative text-white">
+            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white">
               Create an account
             </button>
 
