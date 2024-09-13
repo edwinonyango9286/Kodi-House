@@ -1,14 +1,29 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import signupBgImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import { Link } from "react-router-dom";
 import CustomInput from "../Components/CustomInput";
 import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
+const FORGOT_PASSWORD_SCHEMA = Yup.object().shape({
+  email: Yup.string().email().required("Please enter your email"),
+});
+
 const ForgotPassword = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: FORGOT_PASSWORD_SCHEMA,
+
+    onSubmit: (values) => {},
+  });
+
   return (
     <>
-      <div className="relative w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
+      <div className="relative w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70 overflow-hidden">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
@@ -16,8 +31,11 @@ const ForgotPassword = () => {
           alt="Backgroundimage"
         />
 
-        <div className="flex justify-center items-center h-full w-full opacity-95 m-4 lg:w-1/2">
-          <form className="w-full md:w-3/4  h-auto  flex-shrink-0 bg-white p-4 md:p-8 rounded-md">
+        <div className="flex justify-center items-center h-full w-full opacity-95 m-4 lg:w-1/2 lg:my-4">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="w-full md:w-3/4  h-auto  bg-white p-4 md:p-10 rounded-md"
+          >
             <div className="flex items-center justify-center mb-2 ">
               <img
                 src={IconBlue}
@@ -46,7 +64,20 @@ const ForgotPassword = () => {
                 placeholder="name@example.com"
                 name="email"
                 id="email"
+                className={`border ${
+                  formik.touched.email && formik.errors.email
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
+                onChange={formik.handleChange("email")}
+                onBlur={formik.handleBlur("email")}
+                value={formik.values.email}
               />
+              <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.email && formik.errors.email}
+                </p>
+              </div>
             </div>
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">
@@ -57,7 +88,10 @@ const ForgotPassword = () => {
               </div>
             </div>
 
-            <button type="submit"  className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-base font-semibold text-white">
+            <button
+              type="submit"
+              className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-base font-semibold text-white"
+            >
               Recover password
             </button>
 

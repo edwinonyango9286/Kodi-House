@@ -38,17 +38,17 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen  md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden bg-opacity-70">
+      <div className="relative z-10 w-full  sm:h-full md:h-screen lg:h-full  bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
         <img
           src={backgroundImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
           alt="BackgroundImage"
           loading="lazy"
         />
-        <div className="flex justify-center items-center w-full opacity-95 lg:w-1/2 lg:my-4">
+        <div className="flex justify-center items-center h-full w-full opacity-95 lg:w-1/2 lg:my-4">
           <form
-            className="bg-white p-4 m-4 md:p-8 rounded-md w-full h-full md:py-8 md:w-3/4 md:h-auto"
             onSubmit={formik.handleSubmit}
+            className="bg-white  m-4 p-4 md:p-10 md:py-8 w-full  gap-2 h-full md:w-3/4 rounded-md md:h-auto"
           >
             <div className="flex items-center justify-center mb-2">
               <img
@@ -131,7 +131,6 @@ const SignUp = () => {
                 onBlur={formik.handleBlur("name")}
                 value={formik.values.name}
               />
-
               <div>
                 <p className="text-sm font-normal text-red-500">
                   {formik.touched.name && formik.errors.name}
@@ -161,7 +160,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <div className="flex flex-col mb-2 md:mb-4 gap-2">
+            <div className="flex z-10 flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
                 Password
               </label>
@@ -180,26 +179,26 @@ const SignUp = () => {
                 onBlur={formik.handleBlur("password")}
                 value={formik.values.password}
               />
-              {/* <div>
-                <p className="text-sm font-normal text-red-500">
-                  {formik.touched.password && formik.errors.password}
-                </p>
-              </div> */}
-              
+
+              <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
+                <button
+                  type="button"
+                  onClick={handleToggle}
+                  className="absolute right-0 flex items-center p-3 mt-[-46px]"
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="text-gray-500"
+                  />
+                </button>
+                <div>
+                  <p className="text-sm font-normal text-red-500">
+                    {formik.touched.password && formik.errors.password}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
-              <button
-                type="button"
-                onClick={handleToggle}
-                className="absolute right-0 flex items-center p-3 mt-[-54px]"
-              >
-                <FontAwesomeIcon
-                  icon={showPassword ? faEyeSlash : faEye}
-                  className="text-gray-500"
-                />
-              </button>
-            </div>
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">
                 <input className="mr-1" type="checkbox" />I accept the{" "}

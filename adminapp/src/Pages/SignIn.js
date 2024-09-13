@@ -16,7 +16,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
 const SIGN_IN_SCHEMA = Yup.object().shape({
-  email: Yup.string().email().required("Please enter your name"),
+  email: Yup.string().email().required("Please enter your email"),
   password: Yup.string().required("Please enter your password"),
 });
 
@@ -51,17 +51,17 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-900 flex justify-center items-center overflow-hidden lg:overflow-visible bg-opacity-70">
+      <div className="relative z-10 w-full h-full md:h-screen lg:h-full  bg-cover bg-gray-900 flex justify-center items-center bg-opacity-70">
         <img
           src={backgroundImage}
-          className="absolute w-full h-full  object-cover mix-blend-overlay"
+          className="absolute w-full h-full object-cover mix-blend-overlay"
           alt="BackgroundImage"
           loading="lazy"
         />
         <div className="flex justify-center items-center h-full w-full opacity-95 lg:w-1/2 lg:my-4">
           <form
             onSubmit={formik.handleSubmit}
-            className="bg-white px-6 m-4 p-4 md:p-10 md:py-8 w-full  gap-2 h-full md:w-3/4 md:h-auto rounded-md "
+            className="bg-white  m-4 p-4 md:p-10 md:py-8 w-full  gap-2 h-full md:w-3/4 rounded-md md:h-auto"
           >
             <div className="flex items-center justify-center mb-2">
               <img
@@ -85,6 +85,11 @@ const SignIn = () => {
                 placeholder="name@example.com"
                 name="email"
                 id="email"
+                className={`border ${
+                  formik.touched.email && formik.errors.email
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
                 onChange={formik.handleChange("email")}
                 onBlur={formik.handleBlur("email")}
                 value={formik.values.email}
@@ -96,7 +101,7 @@ const SignIn = () => {
               </div>
             </div>
 
-            <div className="flex flex-col mb-2 md:mb-4 gap-2">
+            <div className="flex z-10 flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
                 Password
               </label>
@@ -114,23 +119,24 @@ const SignIn = () => {
                 onBlur={formik.handleBlur("password")}
                 value={formik.values.password}
               />
-              {/* <div>
-                <p className="text-sm font-normal text-red-500">
-                  {formik.touched.password && formik.errors.password}
-                </p>
-              </div> */}
-            </div>
-            <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
-              <button
-                type="button"
-                onClick={handleToggle}
-                className="absolute right-0 flex items-center p-3 mt-[-54px] "
-              >
-                <FontAwesomeIcon
-                  icon={showPassword ? faEyeSlash : faEye}
-                  className="text-gray-500"
-                />
-              </button>
+
+              <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
+                <button
+                  type="button"
+                  onClick={handleToggle}
+                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className="text-gray-500"
+                  />
+                </button>
+                <div>
+                  <p className="text-sm font-normal text-red-500">
+                    {formik.touched.password && formik.errors.password}
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center justify-between">

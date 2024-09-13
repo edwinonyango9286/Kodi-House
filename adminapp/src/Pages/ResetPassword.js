@@ -6,6 +6,13 @@ import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and I
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const RESET_PASSWORD_SCHEMA = Yup.object().shape({
+  password: Yup.string().required("Please enter your password"),
+  reEnterPassword: Yup.string().required("Please enter re-enter password your"),
+});
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,13 +21,22 @@ const ResetPassword = () => {
     setShowPassword(!showPassword);
   };
 
-   const handleToggle2 = () => {
-     setShowPassword2(!showPassword2);
-   };
+  const handleToggle2 = () => {
+    setShowPassword2(!showPassword2);
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      password: "",
+      reEnterPassword: "",
+    },
+    validationSchema: RESET_PASSWORD_SCHEMA,
+    onSubmit: (values) => {},
+  });
 
   return (
     <>
-      <div className="relative z-10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
+      <div className="relative 10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70 overflow-hidden">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
@@ -28,8 +44,11 @@ const ResetPassword = () => {
           loading="lazy"
         />
 
-        <div className="flex justify-center  items-center h-full w-full lg:w-1/2 opacity-95 mx-4 md:my-2">
-          <form className="w-full flex-shrink-0 bg-white p-8 rounded-md md:w-3/4">
+        <div className="flex justify-center  items-center w-full lg:w-1/2 opacity-95 mx-4 md:my-2">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="w-full flex-shrink-0 bg-white p-8 rounded-md md:w-3/4"
+          >
             <div className="flex items-center justify-center ">
               <img
                 src={IconBlue}
@@ -54,6 +73,14 @@ const ResetPassword = () => {
                 label="Enter new password"
                 placeholder="**********************"
                 id="password"
+                className={`border ${
+                  formik.touched.password && formik.errors.password
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
+                onChange={formik.handleChange("password")}
+                onBlur={formik.handleBlur("password")}
+                value={formik.values.password}
               />
               <div>
                 <button
@@ -66,6 +93,11 @@ const ResetPassword = () => {
                     className="text-gray-500"
                   />
                 </button>
+                <div>
+                  <p className="text-sm font-normal text-red-500">
+                    {formik.touched.password && formik.errors.password}
+                  </p>
+                </div>
               </div>
             </div>
             <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
@@ -74,10 +106,19 @@ const ResetPassword = () => {
               </label>
               <CustomInput
                 type={showPassword2 ? "text" : "password"}
-                name="password"
+                name="reEnterPassword"
                 label="Re-enter password"
                 placeholder="**********************"
-                id="pass"
+                id="reEnterPassword"
+                className={`border ${
+                  formik.touched.reEnterPassword &&
+                  formik.errors.reEnterPassword
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
+                onChange={formik.handleChange("reEnterPassword")}
+                onBlur={formik.handleBlur("reEnterPassword")}
+                value={formik.values.reEnterPassword}
               />
               <div>
                 <button
@@ -90,20 +131,29 @@ const ResetPassword = () => {
                     className="text-gray-500"
                   />
                 </button>
+                <div>
+                  <p className="text-sm font-normal text-red-500">
+                    {formik.touched.reEnterPassword &&
+                      formik.errors.reEnterPassword}
+                  </p>
+                </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between mt-4 md:mt-6">
               <div className="text-gray-500 text-xs font-medium leading-6">
                 <input className="mr-1" type="checkbox" />I accept the{" "}
-                <Link to="/" className="text-blue-600">
+                <Link to="" className="text-blue-600">
                   terms and conditions
                 </Link>
               </div>
             </div>
 
-            <button className="border rounded-xl w-full py-2 mt-8  bg-blue-700 hover:bg-blue-600 relative text-white">
-              Reset Password
+            <button
+              type="submit"
+              className="border rounded-xl w-full py-2 mt-8  bg-blue-700 hover:bg-blue-600 relative text-white"
+            >
+              Reset password
             </button>
           </form>
         </div>
