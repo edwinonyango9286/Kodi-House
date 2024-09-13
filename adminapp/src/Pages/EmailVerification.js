@@ -29,12 +29,12 @@ const EmailVerification = () => {
                 }}
               />
               <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center">
-                Email Verification
+                Email verification
               </h2>
             </div>
 
             <div>
-              <p className="text-default-gray-500 text-xs md:text-base font-medium leading-5 text-center">
+              <p className="text-default-gray-500 text-sm md:text-base font-medium leading-5 text-center">
                 We have sent you verification email example@abc.com, Please
                 check it.
               </p>
@@ -52,9 +52,9 @@ const EmailVerification = () => {
 
             <button
               type="submit"
-              className="border rounded-xl w-full py-2  bg-blue-700 hover:bg-blue-600 relative text-white"
+              className="border rounded-xl w-full py-2  bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold"
             >
-              verify Email
+              verify email
             </button>
 
             <div>

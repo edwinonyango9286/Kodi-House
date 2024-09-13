@@ -15,9 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
-let schema = Yup.object().shape({
-  email: Yup.string().email("Invalid Email").required("Email required"),
-  password: Yup.string().required("password Required"),
+const SIGN_IN_SCHEMA = Yup.object().shape({
+  email: Yup.string().email().required("Please enter your name"),
+  password: Yup.string().required("Please enter your password"),
 });
 
 const SignIn = () => {
@@ -33,7 +33,7 @@ const SignIn = () => {
       email: "",
       password: "",
     },
-    validationSchema: schema,
+    validationSchema: SIGN_IN_SCHEMA,
     onSubmit: (values) => {
       dispatch(signUpUser(values));
     },
@@ -51,7 +51,7 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-800 flex justify-center items-center overflow-hidden lg:overflow-visible bg-opacity-70">
+      <div className="relative z-10 w-full h-full lg:h-auto md:w-screen md:h-screen bg-cover bg-gray-900 flex justify-center items-center overflow-hidden lg:overflow-visible bg-opacity-70">
         <img
           src={backgroundImage}
           className="absolute w-full h-full  object-cover mix-blend-overlay"
@@ -59,7 +59,10 @@ const SignIn = () => {
           loading="lazy"
         />
         <div className="flex justify-center items-center h-full w-full opacity-95 lg:w-1/2 lg:my-4">
-          <form className="bg-white px-6 m-4 p-4 md:p-10 md:py-8 w-full  gap-2 h-full md:w-3/4 md:h-auto rounded-md ">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="bg-white px-6 m-4 p-4 md:p-10 md:py-8 w-full  gap-2 h-full md:w-3/4 md:h-auto rounded-md "
+          >
             <div className="flex items-center justify-center mb-2">
               <img
                 src={IconBlue}
@@ -82,42 +85,58 @@ const SignIn = () => {
                 placeholder="name@example.com"
                 name="email"
                 id="email"
-                onChng={formik.handleChange("email")}
-                onBlr={formik.handleBlur("email")}
-                val={formik.values.email}
+                onChange={formik.handleChange("email")}
+                onBlur={formik.handleBlur("email")}
+                value={formik.values.email}
               />
+              <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.email && formik.errors.email}
+                </p>
+              </div>
             </div>
-            <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
+
+            <div className="flex flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
                 Password
               </label>
               <CustomInput
                 type={showPassword ? "text" : "password"}
                 name="password"
+                className={`border ${
+                  formik.touched.password && formik.errors.password
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
                 placeholder="**********************"
                 id="password"
-                onChng={formik.handleChange("password")}
-                onBlr={formik.handleBlur("password")}
-                val={formik.values.password}
+                onChange={formik.handleChange("password")}
+                onBlur={formik.handleBlur("password")}
+                value={formik.values.password}
               />
-              <div>
-                <button
-                  type="button"
-                  onClick={handleToggle}
-                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
-                >
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="text-gray-500"
-                  />
-                </button>
-              </div>
+              {/* <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.password && formik.errors.password}
+                </p>
+              </div> */}
+            </div>
+            <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
+              <button
+                type="button"
+                onClick={handleToggle}
+                className="absolute right-0 flex items-center p-3 mt-[-54px] "
+              >
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  className="text-gray-500"
+                />
+              </button>
             </div>
 
             <div className="flex items-center justify-between">
               <div className="text-gray-500 text-xs font-medium leading-6">
                 <input className="mr-1" type="checkbox" />
-                Remember Me
+                Remember me
               </div>
               <div>
                 <Link
@@ -128,10 +147,9 @@ const SignIn = () => {
                 </Link>
               </div>
             </div>
-
             <button
               type="submit"
-              className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white"
+              className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold"
             >
               Sign in
             </button>

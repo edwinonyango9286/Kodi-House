@@ -57,8 +57,8 @@ const ForgotPassword = () => {
               </div>
             </div>
 
-            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white">
-              Recover Password
+            <button type="submit"  className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-base font-semibold text-white">
+              Recover password
             </button>
 
             <div className="flex items-center justify-between mt-4">

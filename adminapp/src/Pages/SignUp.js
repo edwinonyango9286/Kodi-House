@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import CustomInput from "../Components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,12 +14,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 
-const signUpSchema = Yup.object().shape({
-  name: Yup.string().required("Please enter your name."),
-  email: Yup.string()
-    .email("Please enter a valid email address.")
-    .required("Please enter your email."),
-  password: Yup.string().required("Please enter your password."),
+const SIGN_UP_SCHEMA = Yup.object().shape({
+  name: Yup.string().required("Please enter your name"),
+  email: Yup.string().email().required("Please enter your email"),
+  password: Yup.string().required("Please enter your password"),
 });
 
 const SignUp = () => {
@@ -35,7 +32,7 @@ const SignUp = () => {
       email: "",
       password: "",
     },
-    validationSchema: signUpSchema,
+    validationSchema: SIGN_UP_SCHEMA,
     onSubmit: (values) => {},
   });
 
@@ -67,7 +64,7 @@ const SignUp = () => {
             </div>
 
             <h2 className="text-3xl text-gray-800 leading-9 font-bold text-center ">
-              create an account
+              Create an account
             </h2>
 
             <div className="mt-4 mb-4 flex justify-center items-center">
@@ -110,20 +107,36 @@ const SignUp = () => {
             </div>
             <div className="mt-4 mb-4 flex justify-center items-center">
               <div className="border-b-2 mr-4 border-gray-400 flex-grow"></div>
-              <p className="text-default-gray-500 text-sm md:text-base font-normal leading-5 ">
-                Or sign up with your email
+              <p className="text-default-gray-500 text-sm md:text-base font-semibold leading-5 ">
+                Or, sign up with your email
               </p>
               <div className="border-b-2 ml-4 border-gray-400 flex-grow"></div>
             </div>
 
             <div className="flex flex-col mb-2 md:mb-4 gap-2">
-              <label className="font-medium text-sm text-gray-800">Name</label>
+              <label className="font-medium text-base text-gray-800">
+                Name
+              </label>
               <CustomInput
                 type="text"
                 placeholder="name"
                 name="name"
                 id="name"
+                className={`border ${
+                  formik.touched.name && formik.errors.name
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
+                onChange={formik.handleChange("name")}
+                onBlur={formik.handleBlur("name")}
+                value={formik.values.name}
               />
+
+              <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.name && formik.errors.name}
+                </p>
+              </div>
             </div>
             <div className="flex flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">Email</label>
@@ -131,10 +144,24 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 placeholder="name@example.com"
+                className={`border ${
+                  formik.touched.email && formik.errors.email
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
                 id="pass"
+                onChange={formik.handleChange("email")}
+                onBlur={formik.handleBlur("email")}
+                value={formik.values.email}
               />
+              <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.email && formik.errors.email}
+                </p>
+              </div>
             </div>
-            <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
+
+            <div className="flex flex-col mb-2 md:mb-4 gap-2">
               <label className="font-medium text-sm text-gray-800">
                 Password
               </label>
@@ -144,19 +171,34 @@ const SignUp = () => {
                 name="password"
                 placeholder="**********************"
                 id="password"
+                className={`border ${
+                  formik.touched.password && formik.errors.password
+                    ? "border-red-600"
+                    : "border-gray-300"
+                } rounded-lg`}
+                onChange={formik.handleChange("password")}
+                onBlur={formik.handleBlur("password")}
+                value={formik.values.password}
               />
-              <div>
-                <button
-                  type="button"
-                  onClick={handleToggle}
-                  className="absolute right-0 flex items-center p-3 mt-[-46px] "
-                >
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="text-gray-500"
-                  />
-                </button>
-              </div>
+              {/* <div>
+                <p className="text-sm font-normal text-red-500">
+                  {formik.touched.password && formik.errors.password}
+                </p>
+              </div> */}
+              
+            </div>
+
+            <div className=" relative z-20 flex flex-col mb-2 md:mb-4 gap-2">
+              <button
+                type="button"
+                onClick={handleToggle}
+                className="absolute right-0 flex items-center p-3 mt-[-54px]"
+              >
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  className="text-gray-500"
+                />
+              </button>
             </div>
             <div className="flex items-center justify-between mt-4">
               <div className="text-gray-500 text-xs font-medium leading-6">
@@ -166,7 +208,7 @@ const SignUp = () => {
                 </Link>
               </div>
             </div>
-            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white">
+            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold">
               Create an account
             </button>
 

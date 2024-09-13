@@ -34,18 +34,14 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = false;
         state.createdUser = action.payload;
-        if (state.isSuccess === true) {
-        }
       })
       .addCase(signUpUser.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
         state.isSuccess = false;
         state.createdUser = action.payload;
-        if (state.isSuccess === true) {
-        }
+        state.message = action?.payload?.response?.data?.message;
       });
-    
   },
 });
 
