@@ -133,7 +133,7 @@ const CodeVerification = () => {
               type="submit"
               className="border rounded-xl w-full py-2  bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold"
             >
-              verify
+              Verify
             </button>
 
             <div>

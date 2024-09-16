@@ -89,12 +89,12 @@ const ResetPassword = () => {
                   className="absolute right-0 flex items-center p-3 mt-[-46px] "
                 >
                   <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="text-gray-500"
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className="text-gray-500 flex-shrink-0"
                   />
                 </button>
                 <div>
-                  <p className="text-sm font-normal text-red-500">
+                  <p className="text-sm font-normal text-red-600">
                     {formik.touched.password && formik.errors.password}
                   </p>
                 </div>
@@ -127,12 +127,12 @@ const ResetPassword = () => {
                   className="absolute right-0 flex items-center p-3 mt-[-46px] "
                 >
                   <FontAwesomeIcon
-                    icon={showPassword2 ? faEyeSlash : faEye}
-                    className="text-gray-500"
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className="text-gray-500 flex-shrink-0"
                   />
                 </button>
                 <div>
-                  <p className="text-sm font-normal text-red-500">
+                  <p className="text-sm font-normal text-red-600 ">
                     {formik.touched.reEnterPassword &&
                       formik.errors.reEnterPassword}
                   </p>

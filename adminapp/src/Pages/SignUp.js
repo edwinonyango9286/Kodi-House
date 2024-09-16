@@ -13,6 +13,8 @@ import { GrTwitter } from "react-icons/gr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
+import { BsFillExclamationCircleFill } from "react-icons/bs";
+
 
 const SIGN_UP_SCHEMA = Yup.object().shape({
   name: Yup.string().required("Please enter your name"),
@@ -131,10 +133,18 @@ const SignUp = () => {
                 onBlur={formik.handleBlur("name")}
                 value={formik.values.name}
               />
-              <div>
-                <p className="text-sm font-normal text-red-500">
-                  {formik.touched.name && formik.errors.name}
-                </p>
+              <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
+                {formik.touched.name && formik.errors.name && (
+                  <span className="absolute right-0 flex items-center p-3 mt-[-46px] ">
+                    <BsFillExclamationCircleFill className="text-red-600 flex-shrink-0 " />
+                  </span>
+                )}
+
+                <div>
+                  <p className="text-sm font-normal text-red-600">
+                    {formik.touched.name && formik.errors.name}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex flex-col mb-2 md:mb-4 gap-2">
@@ -153,10 +163,18 @@ const SignUp = () => {
                 onBlur={formik.handleBlur("email")}
                 value={formik.values.email}
               />
-              <div>
-                <p className="text-sm font-normal text-red-500">
-                  {formik.touched.email && formik.errors.email}
-                </p>
+              <div className=" relative z-20 flex flex-col mb-2 gap-2 md:mb-4">
+                {formik.touched.email && formik.errors.email && (
+                  <span className="absolute right-0 flex items-center p-3 mt-[-46px] ">
+                    <BsFillExclamationCircleFill className="text-red-600 flex-shrink-0 " />
+                  </span>
+                )}
+
+                <div>
+                  <p className="text-sm font-normal text-red-600">
+                    {formik.touched.email && formik.errors.email}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -187,12 +205,12 @@ const SignUp = () => {
                   className="absolute right-0 flex items-center p-3 mt-[-46px]"
                 >
                   <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    className="text-gray-500"
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className="text-gray-500 flex-shrink-0"
                   />
                 </button>
                 <div>
-                  <p className="text-sm font-normal text-red-500">
+                  <p className="text-sm font-normal text-red-600">
                     {formik.touched.password && formik.errors.password}
                   </p>
                 </div>
