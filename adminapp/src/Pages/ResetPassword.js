@@ -36,7 +36,7 @@ const ResetPassword = () => {
 
   return (
     <>
-      <div className="relative 10 w-full h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70 overflow-hidden">
+      <div className="relative 10 w-full min-h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70 overflow-hidden">
         <img
           src={signupBgImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"

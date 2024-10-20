@@ -52,7 +52,7 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full h-full md:h-screen lg:h-full  bg-cover bg-gray-900 flex justify-center items-center bg-opacity-70">
+      <div className="relative z-10 w-full min-h-screen bg-cover bg-gray-900 flex justify-center items-center bg-opacity-70">
         <img
           src={backgroundImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"

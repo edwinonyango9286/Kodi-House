@@ -15,7 +15,6 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 
-
 const SIGN_UP_SCHEMA = Yup.object().shape({
   name: Yup.string().required("Please enter your name"),
   email: Yup.string().email().required("Please enter your email"),
@@ -40,7 +39,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="relative z-10 w-full  sm:h-full md:h-screen lg:h-full  bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
+      <div className="relative z-10 w-full  min-h-screen bg-cover bg-gray-800 flex justify-center items-center bg-opacity-70">
         <img
           src={backgroundImage}
           className="absolute w-full h-full object-cover mix-blend-overlay"
