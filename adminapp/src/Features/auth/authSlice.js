@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authServices";
 
-export const signUpUser = createAsyncThunk(
+export const registerPropertyLandlord = createAsyncThunk(
   "auth/user-register",
   async (userData, thunkAPI) => {
     try {
-      return await authService.createAccount(userData);
+      return await authService.registerLandlord(userData);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -13,9 +13,11 @@ export const signUpUser = createAsyncThunk(
 );
 
 const initialState = {
-  user: "",
+  landlord: "",
   isError: false,
-  isLoading: false,
+  isLoading: {
+    registerPropertyLandlord: false,
+  },
   isSuccess: false,
   message: "",
 };
@@ -26,20 +28,20 @@ const authSlice = createSlice({
   reducer: {},
   extraReducers: (builder) => {
     builder
-      .addCase(signUpUser.pending, (state) => {
-        state.isLoading = true;
+      .addCase(registerPropertyLandlord.pending, (state) => {
+        state.isLoading.registerPropertyLandlord = true;
       })
-      .addCase(signUpUser.fulfilled, (state, action) => {
+      .addCase(registerPropertyLandlord.fulfilled, (state, action) => {
         state.isError = false;
-        state.isLoading = false;
+        state.isLoading.registerPropertyLandlord = false;
         state.isSuccess = false;
-        state.createdUser = action.payload;
+        state.createdLandlord = action?.payload;
+        state.message = action?.payload?.response?.data?.message;
       })
-      .addCase(signUpUser.rejected, (state, action) => {
+      .addCase(registerPropertyLandlord.rejected, (state, action) => {
         state.isError = true;
-        state.isLoading = false;
+        state.isLoading.registerPropertyLandlord = false;
         state.isSuccess = false;
-        state.createdUser = action.payload;
         state.message = action?.payload?.response?.data?.message;
       });
   },

@@ -14,14 +14,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LogoWhite from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/Logo white.svg";
 import { BsFillExclamationCircleFill } from "react-icons/bs";
+import { registerPropertyLandlord } from "../Features/auth/authSlice";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const SIGN_UP_SCHEMA = Yup.object().shape({
-  name: Yup.string().required("Please enter your name"),
-  email: Yup.string().email().required("Please enter your email"),
-  password: Yup.string().required("Please enter your password"),
+  name: Yup.string().required(),
+  email: Yup.string().email().required(),
+  password: Yup.string()
+    .min(8)
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Password must have a mix of upper and lowercase letters, atleast one number and a special character,"
+    )
+    .required(),
 });
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const handleToggle = () => {
     setShowPassword(!showPassword);
@@ -34,8 +43,15 @@ const SignUp = () => {
       password: "",
     },
     validationSchema: SIGN_UP_SCHEMA,
-    onSubmit: (values) => {},
+    onSubmit: (values, { resetForm }) => {
+      dispatch(registerPropertyLandlord(values));
+      resetForm();
+    },
   });
+
+  const isLoading = useSelector(
+    (state) => state?.auth?.isLoading?.registerPropertyLandlord
+  );
 
   return (
     <>
@@ -224,9 +240,25 @@ const SignUp = () => {
                 </Link>
               </div>
             </div>
-            <button className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold">
-              Create an account
-            </button>
+
+            {isLoading ? (
+              <button
+                type="submit"
+                className="border rounded-xl w-full py-2 mt-8 bg-gray-200 relative text-gray-400 text-base font-semibold  flex justify-center items-center"
+              >
+                <span>Create an account</span>
+                <div className=" absolute right-2">
+                  <CircularProgress size={20} thickness={4} />
+                </div>
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="border rounded-xl w-full py-2 mt-8 bg-blue-700 hover:bg-blue-600 relative text-white text-base font-semibold"
+              >
+                Create an account
+              </button>
+            )}
 
             <div className="flex items-center flex-row mt-6 mb-2">
               <h5 className="text-grya-800 text-sm leading-5 font-medium">

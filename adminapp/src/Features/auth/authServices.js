@@ -1,15 +1,13 @@
-import axios from "axios";
-import { base_url } from "../../Utils/BaseUrl";
+import { newRequest } from "../../Utils/newRequest";
 
-const createAccount = async (userData) => {
-  const response = await axios.post(`${base_url}/auth/createaccount`, userData);
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+const registerLandlord = async (userData) => {
+  const response = await newRequest.post("auth/register-landlord", userData);
+  if (response?.data) {
+    return response.data;
   }
-  return response.data;
 };
 
 const authService = {
-  createAccount,
+  registerLandlord,
 };
 export default authService;

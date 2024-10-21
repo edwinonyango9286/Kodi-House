@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpUser } from "../Features/auth/authSlice";
 import backgroundImage from "../Assets/images-20230907T172340Z-001/images/Sign up  Loading  1.jpg";
 import IconBlue from "../Assets/logos and Icons-20230907T172301Z-001/logos and Icons/icon blue.svg";
 import { FcGoogle } from "react-icons/fc";
